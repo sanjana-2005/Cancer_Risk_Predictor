@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction History</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        table {
+            margin-top: 20px;
+        }
+        table th {
+            background-color: #007bff;
+            color: white;
+        }
+        table th, table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto 0;
+        }
+        .alert {
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Prediction History</h2>
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% else %}
+            <div class="table-responsive">
+                <!-- Display the history table here -->
+                {{ tables|safe }}
+            </div>
+        {% endif %}
+        <a href="/" class="btn btn-primary">Back to Home</a>
+    </div>
+</body>
+</html>

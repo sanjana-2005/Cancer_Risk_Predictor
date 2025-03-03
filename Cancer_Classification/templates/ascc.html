@@ -1,0 +1,167 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Prediction</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            color: #333; /* Changed to dark gray for better contrast */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Added shadow */
+        }
+
+        .form-container {
+            background: #fff;
+            color: #333;
+            border-radius: 12px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+            background: #f9f9f9;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2575fc;
+            box-shadow: 0 0 10px rgba(37, 117, 252, 0.2);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #333; /* Changed to dark gray for better contrast */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Added shadow */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px 30px;
+            }
+
+            h2 {
+                font-size: 2.2em;
+            }
+
+            button {
+                font-size: 1em;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.8em;
+            }
+
+            button {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Cancer Diagnosis Prediction</h2>
+        <form action="/predict" method="post">
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" step="0.1" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <label for="bmi">BMI:</label>
+            <input type="number" id="bmi" name="bmi" step="0.1" required>
+
+            <label for="smoking">Smoking:</label>
+            <select id="smoking" name="smoking" required>
+                <option value="Non-Smoker">Non-Smoker</option>
+                <option value="Smoker">Smoker</option>
+            </select>
+
+            <label for="geneticrisk">Genetic Risk:</label>
+            <input type="number" id="geneticrisk" name="geneticrisk" step="0.1" required>
+
+            <label for="physical_activity">Physical Activity (hours per week):</label>
+            <input type="number" id="physical_activity" name="physical_activity" step="0.1" required>
+
+            <label for="alcohol_intake">Alcohol Intake (units per week):</label>
+            <input type="number" id="alcohol_intake" name="alcohol_intake" step="0.1" required>
+
+            <label for="cancerhistory">Cancer History:</label>
+            <select id="cancerhistory" name="cancerhistory" required>
+                <option value="No">No</option>
+                <option value="Yes">Yes</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+        <!-- Button to view prediction history -->
+        <a href="/history" class="btn btn-info mt-3" style="width: 100%; padding: 15px; font-size: 1.2em;">View Prediction History</a>
+    </div>
+</body>
+</html>
